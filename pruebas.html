@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pruebas</title>
+</head>
+<body>
+    <script>
+        alert("Bienvenido a sudoku");
+
+        //matriz multidimensional de 9x9
+/*         var arreglo = new Array();
+        for(let i = 0; i < 9; i++){
+            let generador = new Array();
+            for(let j = 0; j < 9; j++){
+                generador.push(0);
+            }
+            arreglo.push(generador);
+        } */
+
+        //ingreso de datos
+        //matriz multidimensional
+        var arreglo = [
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0]
+        ];
+        
+
+        var valor = parseInt(prompt("Ingrese el valor que desea ingresar"));
+        let filaX = prompt("Ingrese en que fila gusta ingresar");
+        let columnaY = prompt("Ingrese en que columna ingresar"); 
+        //verificar que no se repitan los numeros en la fila y columna
+        var verificarFila = true;
+        var verificarColumna = true;
+            for(let i = 0; i < 9; i++){
+                if(arreglo[filaX][i] == valor){
+                    verificarFila = false;
+                }
+            }
+            for(let i = 0; i < 9; i++){
+                if(arreglo[i][columnaY] == valor){
+                    verificarColumna = false;
+                }
+            }
+        
+        //validacion de que no se repitan los numeros en la matriz
+        if(verificarFila == false && verificarColumna == false){
+            console.log("El valor ya existe en esa Ubicacion Exacta");
+        }else if(verificarFila == false && verificarColumna == true){
+            console.log("El valor ya existe en la fila");
+        }else if(verificarFila == true && verificarColumna == false){
+            console.log("El valor ya existe en la columna");
+        }else if(verificarFila == true && verificarColumna == true){
+            arreglo[filaX][columnaY] = valor;
+        }
+
+        //que no se pueda ingresar un numero si ya existe uno en la matriz
+        for(let i = 1; i <= 9; i++){
+            if(arreglo[filaX][columnaY] == i){
+                console.log("Ya Existe un Numero en las Cordenadas "+filaX+" "+columnaY);
+            }
+        }
+      
+        console.log(verificarFila);
+        console.log(verificarColumna);
+        console.log(arreglo);
+        
+        //buscar y comparar valor en la matriz multidimensional
+        let buscar = valor;
+        for(let i = 0; i < 9; i++){
+            for(let j = 0; j < 9; j++){
+                if(arreglo[i][j] == buscar){
+                    console.log("se Ingreso el valor "+ valor + " en "+ i + " " + j);
+                }
+            }
+        }
+
+
+
+
+
+
+    </script>
+</body>
+</html>
