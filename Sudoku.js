@@ -49,6 +49,16 @@ class Sudoku{
         console.table(this.tablero);
     }
 
+    comprobarExistencia(){
+        //Verificar si existe un Numero donde quieres Ingresar el Numero
+        for(let i = 1; i <= 9; i++){
+            if(this.tablero[this.filaX][this.columnaY] == i){
+                console.log("primer: Ya Existe un Numero en las Cordenadas "+this.filaX+" "+this.columnaY);
+                verificarExistencia = false;
+            }
+        }
+    }
+
     tirar(){
         do {
             this.imprimirTablero();
@@ -58,13 +68,7 @@ class Sudoku{
             this.numeroIngresado = parseInt(prompt("Ingrese el valor que desea ingresar"));
             this.filaX = prompt("Ingrese en que fila gusta ingresar");
             this.columnaY = prompt("Ingrese en que columna ingresar");
-            //Verificar si existe un Numero donde quieres Ingresar el Numero
-            for(let i = 1; i <= 9; i++){
-                if(this.tablero[this.filaX][this.columnaY] == i){
-                    console.log("primer: Ya Existe un Numero en las Cordenadas "+this.filaX+" "+this.columnaY);
-                    verificarExistencia = false;
-                }
-            }
+            this.comprobarExistencia();
             if(verificarExistencia == true){
                 //verificar que no se repitan los numeros en la fila y columna
                     for(let i = 0; i < 9; i++){
@@ -72,7 +76,6 @@ class Sudoku{
                             verificar = false;
                         }
                     } 
-                
                 if(verificar == true){
                     this.vidas--;
                     console.log("Respuesta Incorrecta , !!Pierdes una vida!! "+"\n"+"Vidas Restantes: "+this.vidas);
@@ -81,7 +84,6 @@ class Sudoku{
                     console.log("Respuesta Correcta");
                     this.tablero[this.filaX][this.columnaY] = this.numeroIngresado;
                 }
-    
                 for(let i = 0; i < 9; i++){
                     for(let j = 0; j < 9; j++){
                         this.suma += this.tablero[i][j];
